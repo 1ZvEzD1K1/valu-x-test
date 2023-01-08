@@ -5,22 +5,7 @@ import { useDispatch } from "react-redux";
 
 jest.mock("react-redux");
 const useDispatchMock = useDispatch as jest.Mock;
-
-const mockDispatch = jest.fn();
 const setCount = jest.fn();
-
-useDispatchMock.mockImplementation(() => {
-    return jest.fn().mockImplementation((action) => {
-      switch (action.type) {
-        case 'users/setCount':
-            setCount();
-            break;
-        default:
-            mockDispatch(action(useDispatchMock).arg);
-            break;
-      }
-    });
-  });
 
 test("renders button 1", () => {
   render(<Button text="View all" />);
